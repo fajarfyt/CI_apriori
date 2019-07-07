@@ -40,6 +40,7 @@ class Apriori extends CI_Controller {
 				}
 			}
 		}
+		echo "<pre>";
 		print_r($a);
 	}
 }
