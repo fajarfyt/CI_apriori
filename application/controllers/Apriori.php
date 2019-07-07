@@ -23,35 +23,23 @@ class Apriori extends CI_Controller {
 
 	public function index()
 	{
-		// echo $this->dataset;
-		echo '<pre>';
-		// $item = [];
+		$item = [];
 		$tgl = date('Y-m');
-		$jumlah_trans = $this->model->getAll('transaksi')->result();
-		$qty = $this->model->sum_qty($tgl)->result();
-		foreach ($qty as $d) {
-			$jumlah = $d->qty;
-		}
 		
-		foreach ($jumlah_trans as $data) {
-			$id_trans = $data->id_trans;
-			$detail_menu = $this->model->get_detail($tgl,$id_trans)->result();
-			// $this->datasets[] = $id_trans; 
-			// var_dump($this->dataset);
+		$get_id = $this->model->getIDdate('transaksi',$tgl)->result();
+		foreach ($get_id as $data) {
+			$id = $data->id_trans;
+			$get_menu = $this->model->getMenu($id)->result();
+
+			foreach ($get_menu as $key) {
+				$a[$key->id_trans][]=$key->nama_menu;
+				if ($key->qty > 1) {
+					for ($i=1; $i < $key->qty; $i++) { 
+						$a[$key->id_trans][]=$key->nama_menu;
+					}
+				}
+			}
 		}
-
-		var_dump($jumlah_qty);
-
-		// foreach ($detail_menu as $menu) {
-		// 		// array_push($this->dataset, [
-		// 		// 	$id_trans => $menu->nama_menu
-		// 		// ]);
-		// 		$qty = $menu->qty;
-		// 		$nama = $menu->nama_menu;
-
-		// 		var_dump($qty);
-		// 	}
-		
-		// $this->load->view('welcome_message');
+		print_r($a);
 	}
 }
