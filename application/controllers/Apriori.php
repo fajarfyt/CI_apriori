@@ -44,3 +44,4 @@ class Apriori extends CI_Controller {
 		print_r($a);
 	}
 }
+?>
