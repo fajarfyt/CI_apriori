@@ -41,7 +41,7 @@ class Model extends CI_Model {
 	}
 
 	public function jmlItem($tgl){
-		$this->db->select('count(D.id_menu)');
+		$this->db->select('count(D.id_menu) as id, D.id_menu');
 		$this->db->from('detail_trans D');
 		$this->db->join('transaksi T', 'D.id_trans = T.id_trans');
 		$this->db->like('T.tgl_trans', $tgl);

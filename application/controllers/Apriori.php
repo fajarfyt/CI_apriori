@@ -45,13 +45,22 @@ class Apriori extends CI_Controller {
 
 		$jml = $this->model->jmlItem($tgl)->result();
 		echo "<pre>";
-		print_r($jml);
-		// var_dump(count($get_id));
+		var_dump($jml);
+		var_dump(count($get_id));
 		
-		for ($i=0; $i < count($jml); $i++) { 
-			$item[$i] = ($jml[$i]/count($get_id))*100;
-			print_r($jml[$i]);
+		$j=[];
+		foreach ($jml as $key) {
+			$item[$key->id_menu] = ($key->id/count($get_id))*100;
+			if ($item[$key->id_menu]>$min_sup) {
+				// $c1[$key->id_menu] = $item[$key->id_menu];
+				array_push($j, [
+					'id_menu' => $key->id_menu,
+					'support' => $item[$key->id_menu]
+				]);
+			}
 		}
+		print_r($j);
+
 	}
 }
 ?>
