@@ -39,5 +39,14 @@ class Model extends CI_Model {
 		$this->db->where('D.id_trans', $id);
 		return $this->db->get();
 	}
+
+	public function jmlItem($tgl){
+		$this->db->select('count(D.id_menu)');
+		$this->db->from('detail_trans D');
+		$this->db->join('transaksi T', 'D.id_trans = T.id_trans');
+		$this->db->like('T.tgl_trans', $tgl);
+		$this->db->group_by('D.id_menu');
+		return $this->db->get();
+	}
 	
 } ?>

@@ -8,110 +8,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Dito's Cashier</title>
 	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>">
-	<style type="text/css">
-		body {
-			overflow-x: hidden;
-		}
-		#wrapper {
-			padding-right: 0;
-			-webkit-transition: all 0.5s ease;
-			-moz-transition: all 0.5s ease;
-			-o-transition: all 0.5s ease;
-			transition: all 0.5s ease;
-		}
-		#wrapper.toggled {
-			padding-left: 250px;
-		}
-		#sidebar-wrapper {
-			z-index: 1000;
-			position: fixed;
-			/*right: 250px;*/
-			width: 0;
-			height: 100%;
-			/*margin-right: -250px;*/
-			overflow-y: auto;
-			background: #000;
-			-webkit-transition: all 0.5s ease;
-			-moz-transition: all 0.5s ease;
-			-o-transition: all 0.5s ease;
-			transition: all 0.5s ease;
-		}
-		#wrapper.toggled #sidebar-wrapper {
-			width: 250px;
-		}
-		#page-content-wrapper {
-			width: 100%;
-			position: absolute;
-			padding: 15px;
-		}
-		#wrapper.toggled #page-content-wrapper {
-			position: absolute;
-			margin-right: 0px;
-		}
-
-		/* Sidebar Styles */
-
-		.sidebar-nav {
-			position: absolute;
-			top: 0;
-			width: 250px;
-			margin: 0;
-			padding: 0;
-			list-style: none;
-		}
-		.sidebar-nav li {
-			text-indent: 20px;
-			line-height: 40px;
-		}
-		.sidebar-nav li a {
-			display: block;
-			text-decoration: none;
-			color: #999999;
-		}
-		.sidebar-nav li a:hover {
-			text-decoration: none;
-			color: #fff;
-			background: rgba(255, 255, 255, 0.2);
-		}
-		.sidebar-nav li a:active, .sidebar-nav li a:focus {
-			text-decoration: none;
-		}
-		.sidebar-nav>.sidebar-brand {
-			height: 65px;
-			font-size: 18px;
-			line-height: 60px;
-		}
-		.sidebar-nav>.sidebar-brand a {
-			color: #999999;
-		}
-		.sidebar-nav>.sidebar-brand a:hover {
-			color: #fff;
-			background: none;
-		}
-
-		@media(min-width:768px) {
-			/*#wrapper {
-				padding-right: 0;
-			}
-			#wrapper.toggled {
-				padding-left: 250px;
-			}
-			#sidebar-wrapper {
-				width: 0;
-			}
-			#wrapper.toggled #sidebar-wrapper {
-				width: 250px;
-			}*/
-			#page-content-wrapper {
-				padding: 20px;
-				position: relative;
-			}
-			#wrapper.toggled #page-content-wrapper {
-				position: relative;
-				margin-right: 0;
-			}
-		}
-	</style>
 </head>
 <body>
 	<!-- <div class="container-fluid">
@@ -132,39 +28,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div>
 	</div> -->
-	<nav class="navbar navbar-expand navbar-dark bg-primary">
-				<a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
-					<span class="navbar-toggler-icon"></span>
-				</a>
-			</nav>
-    <div id="wrapper" class="toggled">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li style="background-color: red" class="sidebar-brand">
-                	<a href="#"> Dito's Coffee </a>
-                </li>
-                <li> <a href="#">Dashboard</a> </li>
-                <li> <a href="#">Shortcuts</a> </li>
-                <li> <a href="#">Overview</a> </li>
-                <li> <a href="#">Events</a> </li>
-                <li> <a href="#">About</a> </li>
-                <li> <a href="#">Services</a> </li>
-                <li> <a href="#">Contact</a> </li>
-            </ul>
-        </div> <!-- /#sidebar-wrapper -->
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <h1>Simple Sidebar</h1>
-                <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                <?php
-					echo $content;
-				?>
-            </div>
-        </div> <!-- /#page-content-wrapper -->
-    </div> <!-- /#wrapper -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+		<a class="navbar-brand" href="#">Navbar</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo site_url('apriori');?>">Link</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Dropdown
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" tabindex="-1">Disabled</a>
+				</li>
+			</ul>
+			<div class="my-2 my-lg-0">
+				<a class="btn btn-secondary" href="<?php echo site_url('auth/sign_out');?>" onclick="return confirm('Apakah anda ingin keluar dari program')" role="button">Logout</a>
+			</div>
+		</div>
+	</nav>
+	<?php
+		echo $content;
+	?>
 
 	<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js') ?>" type="text/javascript" charset="utf-8" async defer></script>
 	<!-- Bootstrap core JavaScript -->

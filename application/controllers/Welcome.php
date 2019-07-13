@@ -5,8 +5,16 @@ class Welcome extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->cek_login();
 		$this->load->library('template');
 	}
+
+	private function cek_login(){
+        if (!$this->session->userdata('ses_id')){
+            $this->session->set_flashdata('error', 'Silahkan login terlebih dahulu');
+            redirect('auth');
+        }
+    }
 
 	public function index()
 	{

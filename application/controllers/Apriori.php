@@ -18,30 +18,40 @@ class Apriori extends CI_Controller {
 
 		// if($this->session->userdata('admin')){
 		// 	$this->role = $this->session->userdata('admin');
-		// } 
+		// }
 	}
 
 	public function index()
 	{
-		$item = [];
+		$min_sup = 50;
 		$tgl = date('Y-m');
 		
 		$get_id = $this->model->getIDdate('transaksi',$tgl)->result();
-		foreach ($get_id as $data) {
-			$id = $data->id_trans;
-			$get_menu = $this->model->getMenu($id)->result();
+		// foreach ($get_id as $data) {
+		// 	$id = $data->id_trans;
+		// 	$get_menu = $this->model->getMenu($id)->result();
 
-			foreach ($get_menu as $key) {
-				$a[$key->id_trans][]=$key->nama_menu;
-				if ($key->qty > 1) {
-					for ($i=1; $i < $key->qty; $i++) { 
-						$a[$key->id_trans][]=$key->nama_menu;
-					}
-				}
-			}
-		}
+		// 	foreach ($get_menu as $key) {
+		// 		$a[$key->id_trans][]=$key->nama_menu;
+		// 		if ($key->qty > 1) {
+		// 			for ($i=1; $i < $key->qty; $i++) { 
+		// 				$a[$key->id_trans][]=$key->nama_menu;
+		// 			}
+		// 		}
+		// 	}
+		// }
+		// echo "<pre>";
+		// print_r($a);
+
+		$jml = $this->model->jmlItem($tgl)->result();
 		echo "<pre>";
-		print_r($a);
+		print_r($jml);
+		// var_dump(count($get_id));
+		
+		for ($i=0; $i < count($jml); $i++) { 
+			$item[$i] = ($jml[$i]/count($get_id))*100;
+			print_r($jml[$i]);
+		}
 	}
 }
 ?>
