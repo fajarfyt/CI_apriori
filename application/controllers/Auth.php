@@ -46,6 +46,6 @@ class Auth extends CI_Controller {
 	public function sign_out(){
         $this->session->unset_userdata('ses_id');
         $this->session->unset_userdata('ses_nama');
-        redirect('auth');
+        redirect(base_url());
     }
 }

@@ -29,7 +29,7 @@
 						</form>
 					</div>
 					<div class="card-footer text-muted">
-						<div class="float-right"><a href="#">@Cafe_Dito</a></div>
+						<div class="float-right"><a href="<?php echo base_url() ?>">@Cafe_Dito</a></div>
 					</div>
 				</div>
 			</div>

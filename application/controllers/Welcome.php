@@ -11,7 +11,6 @@ class Welcome extends CI_Controller {
 
 	private function cek_login(){
         if (!$this->session->userdata('ses_id')){
-            $this->session->set_flashdata('error', 'Silahkan login terlebih dahulu');
             redirect('auth');
         }
     }
